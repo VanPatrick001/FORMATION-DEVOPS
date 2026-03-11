@@ -1,0 +1,17 @@
+From ubuntu
+
+workdir /app
+
+copy requirement.txt
+
+copy . /app/
+
+run apt-get update && apt-get install -y python python3-pip
+
+run pip3 install --no-cache-dir -r requirement.txt
+
+expose 8000
+
+ENTRYPOINT [ "python3", "manage.py",  ]
+
+CMD [ "runserver","0.0.0.0:8000" ]
