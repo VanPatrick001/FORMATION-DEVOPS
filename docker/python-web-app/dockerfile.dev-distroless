@@ -1,0 +1,25 @@
+
+
+FROM PYTHON:3.11-SLIM AS base
+
+WORKDIR /app
+
+COPY requirement /app/
+
+RUN pip install --no-cache-dir -r requirement.txt --break-system-package
+
+COPY . .
+
+
+#etape distroless
+
+FROM grc.io/distroless/python3
+COPY --from=base /app  /app
+
+WORKDIR /app
+
+EXPOSE 8000
+
+ENTRYPOINT [ "python3", "manage.py" ]
+
+CMD ["runserver","0.0.0.0:8000"]

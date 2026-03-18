@@ -1,0 +1,25 @@
+#etape 1: build
+
+FROM PYTHON:3.11-SLIM AS builder
+
+WORKDIR /app
+
+COPY requirement /app/
+
+RUN pip install --no-cache-dir -r requirement.txt --break-system-package
+
+COPY . .
+
+#etape 2: run production
+
+FROM PYTHON:3.11-SLIM
+
+COPY --from=builder /app /app
+
+WORKDIR /app
+
+EXPOSE 8000
+
+ENTRYPOINT [ "PYTHON3", "manage.py" ]
+
+CMD ["runserver","0.0.0.0:8000"]
