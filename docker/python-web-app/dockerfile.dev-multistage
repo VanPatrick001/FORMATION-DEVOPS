@@ -1,6 +1,6 @@
 #etape 1: build
 
-FROM PYTHON:3.11-SLIM AS builder
+FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
