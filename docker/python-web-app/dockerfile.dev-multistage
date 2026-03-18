@@ -12,7 +12,7 @@ COPY . .
 
 #etape 2: run production
 
-FROM PYTHON:3.11-SLIM
+FROM python:3.11-slim
 
 COPY --from=builder /app /app
 
