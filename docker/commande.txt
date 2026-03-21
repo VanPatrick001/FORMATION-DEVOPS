@@ -1,0 +1,26 @@
+docker build .
+docker build /path/dockerfile
+docker -t name:tag
+docker run id_image
+docker run -it id_image
+docker -d id_image
+docker run -d -p port:mapping-port id-image
+docker stop id_container
+docker logs id_container
+docker logs -f id_containerd
+docker restart id_container
+docker images
+docker ps
+docker ps -a
+
+!!!kes volumes
+
+docker volume create nom_du_volume
+
+docker volume ls 
+
+docker volume rm nom_du_volume
+
+docker run -it --rm -v test_vol:/app alpine sh  (volume)
+
+docker run -it --rm -v $(pwd)/test:app alpine sh   (bind mount)
